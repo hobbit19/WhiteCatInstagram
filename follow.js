@@ -3,7 +3,7 @@ require('dotenv').config();
 
 //1つのタグについて100人フォローする
 autoFollow = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: false});
   const page = await browser.newPage();
   
   await page.goto('https://www.instagram.com/accounts/login/?hl=ja&source=auth_switcher', {waitUntil: 'networkidle2'})
@@ -49,9 +49,9 @@ autoFollow = async () => {
         //フォローボタンを見つける
         await page.waitFor(1000);
         // let follow = await page.$('.Ppjfr > .o-MQd > .PQo_0 > .bY2yH > .oW_lN');
-        let isFollowing = await page.$x("//button[contains(text(), 'フォロー中')]");
-        console.log(isFollowing.length)
-        if (isFollowing.length　== 0) {
+        let toFollow = await page.$x("//button[contains(text(), 'フォローする')]");
+        console.log(toFollow.length)
+        if (isFollowing.length　!= 0) {
           follewCount += 1
           console.log(follewCount)
           await page.waitForSelector('.Ppjfr > .o-MQd > .PQo_0 > .bY2yH > .oW_lN')
