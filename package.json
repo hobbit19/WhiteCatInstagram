@@ -1,0 +1,23 @@
+{
+  "name": "instagram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "like.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yokopi521/AutoInstagram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yokopi521/AutoInstagram/issues"
+  },
+  "homepage": "https://github.com/yokopi521/AutoInstagram#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "puppeteer": "^1.16.0"
+  }
+}

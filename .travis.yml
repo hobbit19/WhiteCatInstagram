@@ -1,0 +1,15 @@
+os:
+  - linux
+language: node_js
+node_js:
+  - '8'
+
+script:
+  - npm install
+  - node follow.js
+  - node like.js
+
+notifications:
+  email: false
+  slack:
+    secure: "AlGyF8vc2De1PSOzpMEGCr/7KghUReUdt77Ir4law1z2EoePnL52+3PChfQsukJ5bgHXZYTjxNLSJE9fl72myLuOzPkxQowoNb4BX6q+h/hMUME61Rfs4Pn1cwVvqs2RNqWbkm23nCjnvMFjwWf6UF+0YUzd3K238RdBaT3r7WhP5oY50L9OHesjY4Fj9TEneD7cFKkqNgJTL5OAcaIDT6XWdDxmTy2B49LIGs9ZLyshggikig1CKV+WugI0JyrOLS7txreQBdhj6qDDxBmBDS0a/xE5X3HViEvEWtRUcXiktW5tyfU1Vcrj9o0HS5m5D0Cb+XuQ7xMoMX/ftVoNGb1pMzBLWi+6jYRV0TA80/Yau2P4XCxKbwXCb+H8XZNiHpPX8G/GgHjJfBwfXjmxO87YV+UZHbcdYezAxKL3NMmgrrGymdo43a2gclyAYG/jW41poiryJAaZ0QEO9IgtZRdKxgpKMM15y2sTZfZLQVgGThiVkc97fpBQmfVUGhB2oGaW0F6ZYoCj8AN/lIqzxOUcUi7Lwc1ZPv0TE2P/EpIPomtGynZUHMCY2s7UqOIYOBVe57UbAomdT3YHfeV9PKJE+8wuPC8NzRSvGf08WOaWzgBbsIEp7ODX/YtTdajhYl9USl25+VMPc/9oV9LtmTXYyWyrQk72Y9+aZLbLZyU="
