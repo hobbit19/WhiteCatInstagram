@@ -19,13 +19,8 @@ autoLike = async () => {
 
   await page.waitFor(3000);
 
-  //ハッシュタグに飛ぶ
-  //["いいね返し", "#いいねした人全員フォローする"、"いいね返しは絶対"]
-  // let urls = ["https://www.instagram.com/explore/tags/%E3%81%84%E3%81%84%E3%81%AD%E8%BF%94%E3%81%97/?hl=jattps://www.instagram.com/explore/tags/%E3%81%84%E3%81%84%E3%81%AD%E3%81%97%E3%81%9F%E4%BA%BA%E5%85%A8%E5%93%A1%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC%E3%81%99%E3%82%8B/?hl=ja", 
-  //             "https://www.instagram.com/explore/tags/%E3%81%84%E3%81%84%E3%81%AD%E3%81%97%E3%81%9F%E4%BA%BA%E5%85%A8%E5%93%A1%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC%E3%81%99%E3%82%8B/",
-  //             "https://www.instagram.com/explore/tags/%E3%81%84%E3%81%84%E3%81%AD%E8%BF%94%E3%81%97%E3%81%AF%E7%B5%B6%E5%AF%BE/?hl=ja"
-  //             ]
-  let urls = ["https://www.instagram.com/explore/tags/%E5%84%AA%E6%9F%94%E4%B8%8D%E6%96%AD/"]
+  //#猫
+  let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]
   
   //いいねの個数をカウントする
   let likeCount = 0

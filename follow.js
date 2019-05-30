@@ -22,12 +22,8 @@ autoFollow = async () => {
 
 
   //ハッシュタグに飛ぶ
-  //["フォロー返します", "フォロバ100 "、"相互フォロー", "グルメ"]
-  // let urls = ["https://www.instagram.com/explore/tags/%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC%E8%BF%94%E3%81%97%E3%81%BE%E3%81%99/",
-  //             "https://www.instagram.com/explore/tags/%E3%83%95%E3%82%A9%E3%83%AD%E3%83%90100/",
-  //             "https://www.instagram.com/explore/tags/%E7%9B%B8%E4%BA%92%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC/"]
-  //グルメ
-  let urls = ["https://www.instagram.com/explore/tags/%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC%E8%BF%94%E3%81%97%E3%81%BE%E3%81%99/?hl=ja"]
+  //#白猫
+  let urls = ["https://www.instagram.com/explore/tags/%E7%99%BD%E7%8C%AB/?hl=ja"]
   //フォローした回数をカウントする
   let follewCount = 0
 
