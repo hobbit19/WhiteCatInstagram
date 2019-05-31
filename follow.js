@@ -3,7 +3,7 @@ require('dotenv').config();
 
 //1つのタグについて100人フォローする
 autoFollow = async () => {
-  const browser = await puppeteer.launch({ headless: false});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   
   await page.goto('https://www.instagram.com/accounts/login/?hl=ja&source=auth_switcher', {waitUntil: 'networkidle2'})
