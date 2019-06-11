@@ -20,7 +20,9 @@ autoLike = async () => {
   await page.waitFor(3000);
 
   //#猫
-  let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]
+  // let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]
+  //#猫好きな人と繋がりたい
+  let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB%E5%A5%BD%E3%81%8D%E3%81%AA%E4%BA%BA%E3%81%A8%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%9F%E3%81%84/?hl=ja"]
   
   //いいねの個数をカウントする
   let likeCount = 0
