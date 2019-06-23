@@ -59,6 +59,7 @@ autoFollow = async () => {
     await page.waitFor(200);
   }
 
+  //フォロワーの名前を配列にぶち込む
   const followerNames = await page.evaluate(() => Array.from(document.getElementsByClassName("FPmhX"), e => e.innerText))
   console.log(followerNames)
   console.log(followerNames.length)
@@ -88,6 +89,27 @@ autoFollow = async () => {
     await page.waitFor(200);
     console.log(count)
   }
+
+  //フォロー中の名前を配列にぶち込む
+  const followingNames = await page.evaluate(() => Array.from(document.getElementsByClassName("FPmhX"), e => e.innerText))
+  console.log(followingNames)
+  console.log(followingNames.length)
+
+  //フォローボタンを配列にぶち込む
+  const followingButton = await page.evaluate(() => Array.from(document.getElementsByClassName("Pkbci"), e => e.children[0]))
+  console.log(followingButton)
+  console.log(followingButton.length)
+
+  for(let k = 0; k < followingNames.length; k++) {
+    if (followerNames.includes(followingNames[k])) {
+      console.log("follower")
+    } else {
+      followingButton[k].click()
+      await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
+      await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
+    }
+  }
+
 
   await browser.close();
 }
