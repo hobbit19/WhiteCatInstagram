@@ -6,7 +6,7 @@ node_js:
 
 script:
   - npm install
-  - node follow.js
+  # - node follow.js
   - node like.js
 
 notifications:

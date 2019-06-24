@@ -96,10 +96,11 @@ autoFollow = async () => {
   console.log(followingNames.length)
 
   //フォローボタンを配列にぶち込む
-  const followingButton = await page.evaluate(() => Array.from(document.getElementsByClassName("Pkbci"), e => e.children[0]))
-  console.log(followingButton)
+  let followingButton = await page.$x("//button[contains(text(), 'フォロー中')]");
   console.log(followingButton.length)
+  // console.log(followingButton.length)
 
+  let unfollowCount = 0
   for(let k = 0; k < followingNames.length; k++) {
     if (followerNames.includes(followingNames[k])) {
       console.log("follower")
@@ -107,10 +108,14 @@ autoFollow = async () => {
       followingButton[k].click()
       await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
       await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
+      unfollowCount += 1
+      await page.waitFor(3000)
+    }
+
+    if (unfollowCount == 50) {
+      break;
     }
   }
-
-
   await browser.close();
 }
 
