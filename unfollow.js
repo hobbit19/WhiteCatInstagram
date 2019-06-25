@@ -50,7 +50,7 @@ autoFollow = async () => {
     let count = await page.evaluate(() => {
         return document.querySelectorAll('.wo9IH').length
     });
-    var followerCountNum = Number(followerCount.replace(",", ""))
+    var followerCountNum = Number(followerCount.replace(",", "")) - 5
     if (count >= followerCountNum) {
       break;
     }
@@ -82,6 +82,7 @@ autoFollow = async () => {
         return document.querySelectorAll('.wo9IH').length
     });
     var followingCountNum = Number(followingCount.replace(",", "")) - 5
+    console.log(followerCountNum)
     if (count >= followingCountNum) {
       console.log("break")
       break;
