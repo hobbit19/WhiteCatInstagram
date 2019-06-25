@@ -82,7 +82,7 @@ autoFollow = async () => {
         return document.querySelectorAll('.wo9IH').length
     });
     var followingCountNum = Number(followingCount.replace(",", "")) - 5
-    if (count == followingCountNum) {
+    if (count >= followingCountNum) {
       console.log("break")
       break;
     }
