@@ -97,7 +97,9 @@ autoFollow = async () => {
   console.log(followingNames.length)
 
   //フォローボタンを配列にぶち込む
-  let followingButton = await page.evaluate(() => Array.from(document.getElementsByClassName("L3NKy"), e => e))
+  let followingButton = await page.evaluate(() => {
+    return document.getElementsByClassName("L3NKy");
+  })
   console.log(followingButton.length)
   // console.log(followingButton.length)
 
