@@ -96,20 +96,13 @@ autoFollow = async () => {
   console.log(followingNames)
   console.log(followingNames.length)
 
-  //フォローボタンを配列にぶち込む
-  let followingButton = await page.evaluate(() => {
-    return document.getElementsByClassName("L3NKy");
-  })
-  console.log(followingButton.length)
-  // console.log(followingButton.length)
-
   let unfollowCount = 0
   for(let k = 0; k < followingNames.length; k++) {
     if (followerNames.includes(followingNames[k])) {
       console.log("follower")
     } else {
       console.log("unfollow")
-      followingButton[k].click()
+      await page.click(`.PZuss > .wo9IH:nth-child(${k + 1}) > .uu6c_ > .Pkbci > .\_0mzm-`)
       await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_', {timeout: 0})
       await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
       unfollowCount += 1
