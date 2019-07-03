@@ -110,7 +110,7 @@ autoFollow = async () => {
     } else {
       console.log("unfollow")
       followingButton[k].click()
-      await page.waitFor(6000)
+      await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_', {timeout: 0})
       await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
       unfollowCount += 1
     }
