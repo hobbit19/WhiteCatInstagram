@@ -64,6 +64,10 @@ autoFollow = async () => {
         //バツボタンをクリック
         await page.waitForSelector('body > .\_2dDPU > .ckWGn')
         await page.click('body > .\_2dDPU > .ckWGn')
+
+        if (follewCount == 70) {
+          break;
+        }
       }
 
       // 投稿取得のためにスクロールする
