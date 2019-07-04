@@ -57,7 +57,7 @@ autoLike = async () => {
         await page.waitFor(3000)
 
         //バツボタンをクリック
-        await page.waitForSelector('body > .\_2dDPU > .ckWGn')
+        await page.waitForSelector('body > .\_2dDPU > .ckWGn', {timeout: 0})
         await page.click('body > .\_2dDPU > .ckWGn')
       }
 
