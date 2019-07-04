@@ -97,7 +97,7 @@ autoFollow = async () => {
   console.log(followingNames.length)
 
   let unfollowCount = 0
-  for(let k = 0; k < followingNames.length; k++) {
+  for(let k = followingNames.length - 1; k >= 0; k--) {
     if (followerNames.includes(followingNames[k])) {
       console.log("follower")
     } else {
