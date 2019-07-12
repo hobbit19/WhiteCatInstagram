@@ -5,19 +5,23 @@ require('dotenv').config();
 autoLike = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  
-  await page.goto('https://www.instagram.com/accounts/login/?hl=ja&source=auth_switcher', {waitUntil: 'networkidle2'})
-  await page.setViewport({ width: 1200, height: 800 });
-  
-  //パスワード入力
-  await page.type('input[name="username"]', process.env.USERNAME);
-  await page.type('input[name="password"]', process.env.PASSWORD);
 
-  //ログインクリック
-  await page.waitForSelector('.gr27e > .EPjEi > .HmktE > .bkEs3 > .\_0mzm-')
-  await page.click('.gr27e > .EPjEi > .HmktE > .bkEs3 > .\_0mzm-')
+  let cookies =[{
+    "domain": ".instagram.com",
+    "expirationDate": process.env.EXPIRATIONDATE,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "sessionid",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": "0",
+    "value": process.env.VALUE,
+    "id": 9
+  }]
 
-  await page.waitFor(3000);
+  page.setCookie(...cookies)
 
   //#猫
   // let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]

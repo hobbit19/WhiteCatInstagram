@@ -8,7 +8,7 @@ script:
   - npm install
   - node like.js
   - node follow.js
-  - node unfollow.js
+  # - node unfollow.js
 
 notifications:
   email: false

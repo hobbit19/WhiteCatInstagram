@@ -1,25 +1,30 @@
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
+//name = document.getElementsByClassName("wo9IH")[0].getElementsByClassName("wFPL8")[0].textContent
+//button = document.getElementsByClassName("wo9IH")[0].getElementsByClassName("_0mzm-")[0]
+
 //1つのタグについて100人フォローする
 autoFollow = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   
-  await page.goto('https://www.instagram.com/accounts/login/?hl=ja&source=auth_switcher', {waitUntil: 'networkidle2'})
-  await page.setViewport({ width: 1200, height: 800 });
+  let cookies =[{
+    "domain": ".instagram.com",
+    "expirationDate": 1594428212.601199,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "sessionid",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": "0",
+    "value": "14076731341%3ApSlGFFhHbf5MLI%3A3",
+    "id": 9
+  }]
 
-  await page.waitFor(3000);
-  
-  //パスワード入力
-  await page.type('input[name="username"]', process.env.USERNAME);
-  await page.type('input[name="password"]', process.env.PASSWORD);
-
-  //ログインクリック
-  await page.waitForSelector('.gr27e > .EPjEi > .HmktE > .bkEs3 > .\_0mzm-')
-  await page.click('.gr27e > .EPjEi > .HmktE > .bkEs3 > .\_0mzm-')
-
-  await page.waitFor(5000);
+  page.setCookie(...cookies)
 
   //プロフィールに遷移する
   let url = "https://www.instagram.com/whitenekko"
