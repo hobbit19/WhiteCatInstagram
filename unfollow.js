@@ -6,8 +6,9 @@ require('dotenv').config();
 
 //1つのタグについて100人フォローする
 autoFollow = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
+  await page.setViewport({ width: 1200, height: 800 });
   
   let cookies =[{
     "domain": ".instagram.com",
@@ -86,7 +87,7 @@ autoFollow = async () => {
     let count = await page.evaluate(() => {
         return document.querySelectorAll('.wo9IH').length
     });
-    var followingCountNum = Number(followingCount.replace(",", "")) - 5
+    var followingCountNum = Number(followingCount.replace(",", "")) - 3
     console.log(followerCountNum)
     if (count >= followingCountNum) {
       console.log("break")
@@ -97,17 +98,19 @@ autoFollow = async () => {
   }
 
   //フォロー中の名前を配列にぶち込む
-  const followingNames = await page.evaluate(() => Array.from(document.getElementsByClassName("FPmhX"), e => e.innerText))
-  console.log(followingNames)
-  console.log(followingNames.length)
+  const followingCellsCount = await page.evaluate(() => document.getElementsByClassName("wo9IH").length)
+  console.log(followingCellsCount)
 
   let unfollowCount = 0
-  for(let k = followingNames.length - 1; k >= 0; k--) {
-    if (followerNames.includes(followingNames[k])) {
+  for(let k = 0; k < followingCellsCount; k++) {
+    let name = await page.evaluate((k) => document.getElementsByClassName("wo9IH")[k].getElementsByClassName("wFPL8")[0].textContent)
+    if (followerNames.includes(name)) {
       console.log("follower")
     } else {
       console.log("unfollow")
-      await page.click(`.PZuss > .wo9IH:nth-child(${k + 1}) > .uu6c_ > .Pkbci > .\_0mzm-`)
+      await page.evaluate((k) => {
+        document.getElementsByClassName("wo9IH")[k].getElementsByClassName("_0mzm-")[0].click()
+      })
       await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_', {timeout: 0})
       await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
       unfollowCount += 1
