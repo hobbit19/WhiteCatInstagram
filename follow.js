@@ -21,7 +21,7 @@ autoFollow = async () => {
     "id": 9
   }]
 
-  page.setCookie(...cookies)
+  await page.setCookie(...cookies)
 
 
 

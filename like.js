@@ -21,7 +21,7 @@ autoLike = async () => {
     "id": 9
   }]
 
-  page.setCookie(...cookies)
+  await page.setCookie(...cookies)
 
   //#猫
   // let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]
