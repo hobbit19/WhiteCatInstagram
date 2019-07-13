@@ -3,25 +3,27 @@ require('dotenv').config();
 
 //1つのタグについて200いいねする
 autoLike = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
 
-  let cookies =[{
-    "domain": ".instagram.com",
-    "expirationDate": process.env.EXPIRATIONDATE,
-    "hostOnly": false,
-    "httpOnly": true,
-    "name": "sessionid",
-    "path": "/",
-    "sameSite": "no_restriction",
-    "secure": true,
-    "session": false,
-    "storeId": "0",
-    "value": process.env.VALUE,
-    "id": 9
-  }]
+  const cookies =[
+    {
+      "domain": ".instagram.com",
+      "expirationDate": process.env.EXPIRATIONDATE,
+      "hostOnly": false,
+      "httpOnly": true,
+      "name": "sessionid",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": false,
+      "storeId": "0",
+      "value": process.env.VALUE,
+      "id": 9
+    }
+  ]
 
-  await page.setCookie(...cookies)
+  await page.setCookie(...cookies);
 
   //#猫
   // let urls = ["https://www.instagram.com/explore/tags/%E7%8C%AB/?hl=ja"]
