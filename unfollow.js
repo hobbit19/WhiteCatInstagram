@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 require('dotenv').config();
+const spreadsheet = require("./spreadsheet.js");
 
 //name = document.getElementsByClassName("wo9IH")[0].getElementsByClassName("wFPL8")[0].textContent
 //button = document.getElementsByClassName("wo9IH")[0].getElementsByClassName("_0mzm-")[0]
@@ -12,7 +13,7 @@ autoFollow = async () => {
   
   let cookies =[{
     "domain": ".instagram.com",
-    "expirationDate": 1594428212.601199,
+    "expirationDate": process.env.EXPIRATIONDATE,
     "hostOnly": false,
     "httpOnly": true,
     "name": "sessionid",
@@ -21,7 +22,7 @@ autoFollow = async () => {
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "14076731341%3ApSlGFFhHbf5MLI%3A3",
+    "value": process.env.VALUE,
     "id": 9
   }]
 
@@ -56,7 +57,7 @@ autoFollow = async () => {
     let count = await page.evaluate(() => {
         return document.querySelectorAll('.wo9IH').length
     });
-    var followerCountNum = Number(followerCount.replace(",", "")) - 5
+    var followerCountNum = Number(followerCount.replace(",", "")) - 1
     if (count >= followerCountNum) {
       break;
     }
@@ -108,19 +109,19 @@ autoFollow = async () => {
       console.log("follower")
     } else {
       console.log("unfollow")
-      await page.evaluate((k) => {
-        document.getElementsByClassName("wo9IH")[k].getElementsByClassName("_0mzm-")[0].click()
-      })
-      await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_', {timeout: 0})
-      await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
+      spreadsheet.writeTo([name])
+      // await page.evaluate((k) => {
+      //   document.getElementsByClassName("wo9IH")[k].getElementsByClassName("_0mzm-")[0].click()
+      // })
+      // await page.waitForSelector('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_', {timeout: 0})
+      // await page.click('.RnEpo > .pbNvD > .piCib > .mt3GC > .-Cab_')
       unfollowCount += 1
     }
-    await page.waitFor(15000)
 
-    if (unfollowCount == 70) {
-      console.log("break")
-      break;
-    }
+    // if (unfollowCount == 70) {
+    //   console.log("break")
+    //   break;
+    // }
   }
   await browser.close();
 }
