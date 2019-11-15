@@ -3,7 +3,7 @@ require('dotenv').config();
 
 //1つのタグについて100人フォローする
 autoFollow = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
   
   let cookies =[{
